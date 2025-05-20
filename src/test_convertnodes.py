@@ -44,7 +44,3 @@ class TestConvertNodes(unittest.TestCase):
         self.assertEqual(result.value, "")
         self.assertEqual(result.props, {"src": "https://img.com/image.png", "alt": "alt text"})
 
-
-
-if __name__ == "__main__":
-    unittest.main()
