@@ -1,7 +1,7 @@
 import unittest
 
-from leafnode import LeafNode
-from parentnode import ParentNode
+from src.leafnode import LeafNode
+from src.parentnode import ParentNode
 
 class TestParentNode(unittest.TestCase):
 
@@ -69,7 +69,3 @@ class TestParentNode(unittest.TestCase):
             node.to_html(),
             "<div><b>Bold text</b>Normal text<span><i>italic text</i>after italic</span></div>"
         )
-
-
-if __name__ == "__main__":
-    unittest.main()

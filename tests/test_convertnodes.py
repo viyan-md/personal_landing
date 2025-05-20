@@ -1,7 +1,7 @@
 import unittest
-from convertnodes import ConvertNodes
-from textnode import TextNode, TextType
-from leafnode import LeafNode
+from src.convertnodes import ConvertNodes
+from src.textnode import TextNode, TextType
+from src.leafnode import LeafNode
 
 class TestConvertNodes(unittest.TestCase):
     def test_text_conversion(self):

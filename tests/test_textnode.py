@@ -1,5 +1,5 @@
 import unittest
-from textnode import TextNode, TextType
+from src.textnode import TextNode, TextType
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
@@ -27,5 +27,3 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual("TextNode(This is a text node, text, https://www.boot.dev)", repr(node))
     
 
-if __name__ == "__main__":
-    unittest.main()

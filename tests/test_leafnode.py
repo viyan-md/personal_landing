@@ -1,5 +1,5 @@
 import unittest
-from leafnode import LeafNode
+from src.leafnode import LeafNode
 
 class TestLeafNode(unittest.TestCase):
     def test_init_no_children(self):
@@ -28,5 +28,3 @@ class TestLeafNode(unittest.TestCase):
         with self.assertRaises(ValueError):
             leaf.to_html()
 
-if __name__ == "__main__":
-    unittest.main()

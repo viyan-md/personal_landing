@@ -1,5 +1,5 @@
 import unittest
-from htmlnode import HTMLNode
+from src.htmlnode import HTMLNode
 
 class TestHTMLNode(unittest.TestCase):
     def test_init(self):
@@ -87,7 +87,3 @@ class TestHTMLNode(unittest.TestCase):
         self.assertEqual(node.__repr__(), "Tag: a\nValue: read here\nChildren: None\nProps: {'href': 'https://www.google.com', 'target': '_blank'}")
         self.assertEqual(node2.__repr__(), "Tag: None\nValue: None\nChildren: None\nProps: None")
     
-
-
-if __name__ == "__main__":
-    unittest.main()
