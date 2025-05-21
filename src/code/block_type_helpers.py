@@ -1,14 +1,21 @@
 import re
 
+block_patterns = {
+    "code": re.compile(r"^```"),
+    "heading": re.compile(r"^#{1,6}\s+"),
+    "ordered_list": re.compile(r"^(\d+)\.\s+"),
+    "unordered_list": re.compile(r"^- \s*"),
+    "quote": re.compile(r"^>\s+")
+}
+
 def is_valid_ordered_list(block:str):
     if not block.strip():
         return True
     
     lines = block.strip().splitlines()
-    ol_pattern = re.compile(r"^(\d+)\.\s+")
 
     for expected_index, line in enumerate(lines, start=1):
-        m = ol_pattern.match(line)
+        m = block_patterns["ordered_list"].match(line)
 
         if not m:
             return False
@@ -22,19 +29,14 @@ def is_valid_ordered_list(block:str):
 
 def is_valid_unordered_list(block: str):
     lines = block.splitlines()
-    ul_pattern = re.compile(r"^- \s*")
-    return all(ul_pattern.match(line) for line in lines if line.strip() != "")
+    return all(block_patterns["unordered_list"].match(line) for line in lines if line.strip() != "")
 
 def get_block_type(block):
-    code_pattern = re.compile(r"^```")
-    heading_pattern = re.compile(r"^#{1,6}\s+")
-    quote_pattern =re.compile(r"^>\s+")
-
-    if code_pattern.match(block):
+    if block_patterns["code"].match(block):
         return "code"
-    if heading_pattern.match(block):
+    if block_patterns["heading"].match(block):
         return "heading"
-    if quote_pattern.match(block):
+    if block_patterns["quote"].match(block):
         return "quote"
     if is_valid_ordered_list(block):
         return "ordered_list"

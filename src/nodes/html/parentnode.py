@@ -1,4 +1,4 @@
-from src.nodes.html.htmlnode import HTMLNode
+from nodes.html.htmlnode import HTMLNode
 
 class ParentNode(HTMLNode):
     def __init__(self, tag: str, children: list["HTMLNode"], props: dict | None = None):
@@ -11,7 +11,7 @@ class ParentNode(HTMLNode):
             raise ValueError("parent node must have children")
         
         def generate_html_str(node_list):
-            return "" if not node_list else node_list[0].to_html() + generate_html_str(node_list[1:])
+            return "".join(node.to_html() for node in node_list)
         
         html_str = f"<{self.tag}{self.props_to_html()}>{generate_html_str(self.children)}</{self.tag}>"
 
