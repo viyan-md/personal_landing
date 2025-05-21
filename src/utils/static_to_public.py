@@ -3,7 +3,7 @@ from os import listdir, mkdir, makedirs
 from shutil import copy, rmtree
 
 def create_clean_public():
-    public_path = "public"
+    public_path = "docs"
 
     if path.exists(public_path):
         rmtree(public_path)
@@ -14,7 +14,7 @@ def create_clean_public():
 def copy_static_to_public():
     create_clean_public()
 
-    public_path = "public"
+    public_path = "docs"
     static_path = "static"
 
     def copy_folder_contents(src_folder, dst_folder):

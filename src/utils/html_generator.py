@@ -14,7 +14,7 @@ def write_to_file(path, content):
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
 
-def generate_page(from_path, dest_path, template_path="template.html"):
+def generate_page(basepath, from_path, dest_path, template_path="template.html"):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
     
     with open(from_path, "r") as file:
@@ -27,6 +27,9 @@ def generate_page(from_path, dest_path, template_path="template.html"):
 
     template = template.replace("{{ Title }}", title)
     template = template.replace("{{ Content }}", html_string)
+    template = template.replace('href="/', f'href="{basepath}')
+    template = template.replace('src="/', f'src="{basepath}')
+
 
     write_to_file(dest_path, template)
 
@@ -34,16 +37,16 @@ def md_to_html(name):
     pre, _ = os.path.splitext(name)
     return pre + ".html"
 
-def generate_pages_recursively(source, destination, template_path="template.html"):
+def generate_pages_recursively(basepath, source, destination, template_path="template.html"):
     with os.scandir(source) as d:
         for e in d:
             new_source = os.path.join(source, e.name)
             new_destination = os.path.join(destination, e.name)
     
             if e.is_dir():
-                generate_pages_recursively(new_source, new_destination)
+                generate_pages_recursively(basepath, new_source, new_destination)
             else:
-                generate_page(new_source, md_to_html(new_destination))
+                generate_page(basepath=basepath, from_path=new_source, dest_path=md_to_html(new_destination))
 
 
     
