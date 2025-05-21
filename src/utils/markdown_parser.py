@@ -1,5 +1,6 @@
 import re
-from src.textnode import TextNode, TextType
+from src.nodes.text.textnode import TextNode, TextType
+from src.code.block_type_helpers import get_block_type
 
 def split_nodes_delimiter(old_nodes: list["TextNode"], delimiter: str, text_type: TextType):
     
@@ -25,7 +26,6 @@ def extract_markdown_images(text):
 
 def extract_markdown_links(text):
     return re.findall(r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
-
 
 def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
     split_nodes = []
@@ -60,8 +60,6 @@ def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
 
     return split_nodes
 
-
-
 def split_nodes_link(old_nodes):
     split_nodes = []
 
@@ -94,7 +92,6 @@ def split_nodes_link(old_nodes):
 
     return split_nodes
 
-
 def text_to_textnodes(text):
     nodes = [TextNode(text, TextType.TEXT)]
 
@@ -107,5 +104,24 @@ def text_to_textnodes(text):
 
     return nodes
 
-def markdown_to_blocks(markdown):
+def markdown_to_blocks(markdown: str):
     return [block.strip() for block in markdown.split("\n\n") if block.strip()]
+
+def block_to_block_type(block):
+    return get_block_type(block)
+
+def get_header_tag(block):
+    return f"h{len(block.split(" ", maxsplit=1))}"
+
+
+
+
+
+
+
+
+
+
+
+
+

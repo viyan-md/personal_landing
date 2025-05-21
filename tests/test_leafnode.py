@@ -1,5 +1,5 @@
 import unittest
-from src.leafnode import LeafNode
+from src.nodes.html.leafnode import LeafNode
 
 class TestLeafNode(unittest.TestCase):
     def test_init_no_children(self):

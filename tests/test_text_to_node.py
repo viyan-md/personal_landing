@@ -1,6 +1,6 @@
 import unittest
-from src.textnode import TextNode, TextType
-from src.utility_funcs import text_to_textnodes
+from src.nodes.text.textnode import TextNode, TextType
+from src.utils.markdown_parser import text_to_textnodes
 
 class TestTextToNode(unittest.TestCase):
     def test_text_to_textnodes_full(self):

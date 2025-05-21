@@ -1,4 +1,4 @@
-from src.htmlnode import HTMLNode
+from src.nodes.html.htmlnode import HTMLNode
 
 class ParentNode(HTMLNode):
     def __init__(self, tag: str, children: list["HTMLNode"], props: dict | None = None):

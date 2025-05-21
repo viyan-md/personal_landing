@@ -1,6 +1,6 @@
 import unittest
-from src.textnode import TextNode, TextType
-from src.utility_funcs import split_nodes_image 
+from src.nodes.text.textnode import TextNode, TextType
+from src.utils.markdown_parser import split_nodes_image 
 
 class TestSplitNodesImage(unittest.TestCase):
     def test_split_images_basic(self):

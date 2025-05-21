@@ -1,8 +1,9 @@
-from src.textnode import TextNode, TextType
-from src.leafnode import LeafNode
+from nodes.text.textnode import TextNode, TextType
+from nodes.html.leafnode import LeafNode
 
 class ConvertNodes:
-    def from_txt_to_html(text_node: "TextNode") -> LeafNode:
+    @staticmethod
+    def from_txt_to_html(text_node: "TextNode"):
         match text_node.text_type:
             case TextType.TEXT:
                 return LeafNode(tag=None, value=text_node.text)
