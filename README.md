@@ -1,1 +1,1 @@
-# personal_landing
+# static_site_generator
